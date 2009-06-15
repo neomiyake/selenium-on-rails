@@ -10,7 +10,8 @@ class SeleniumGenerator < Rails::Generator::Base
 
   def manifest
     record do |m|
-      path = 'test/selenium'
+      path = SeleniumOnRailsConfig.get("selenium_generate_path") ? SeleniumOnRailsConfig.get("selenium_generate_path") : 'test/selenium'
+#      path = 'test/selenium'
       path = File.join(path, suite_path) unless suite_path.empty?
       m.directory path
 
